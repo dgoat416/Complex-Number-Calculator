@@ -2789,10 +2789,11 @@ void nToMinus(string& str)
 void main()
 {
 	// MAIN 
-	ifstream inFile;// ("expressions.txt");
-	fstream outFile;// ("result.txt");
+	ifstream inFile;
+	fstream outFile;
 	string oneLine = "";
 	StackDoublyLinkedList<Complex> finalResultTest;
+	StackDoublyLinkedList<char> finalResult;
 	string tempNum = "";
 	string tempLine = "";
 
@@ -2947,7 +2948,7 @@ void main()
 						else if (_operatoR == '%')
 						{
 							// VEC is empty and finalResultTest is nonempty
-							if (myVEC.size() == 0 && finalResultTest.isEmptyList() == false)
+							if (/*myVEC.size() == 0 &&*/ isOperator(oneLine[i - 1]) == true && finalResultTest.isEmptyList() == false)
 								finalResultTest.addBack(performOperation(finalResultTest.getNPopTop(), Complex(), _operatoR));
 
 							// VEC is nonempty and finalResultTest is empty
@@ -3011,123 +3012,37 @@ void main()
 				} // end for loop
 
 
-				//// process oneLine
+				//// put all of current processed oneLine on a stack and perform the operations 
+				//// and push result back on stack until you are left with one operand (stack size = 1)
 				//for (int i = 0; i < oneLine.length(); i++)
 				//{
-				//	operand1 = Complex();
-				//	operand2 = Complex();
-				//	operand3 = Complex();
-				//	_operatoR = 0;
+				//		finalResult.addBack(oneLine[i]);
+				//}
 
-				//	// get the operands and operators required
-				//	if (oneLine[i] == '$')
+				//while (finalResult.getSize(	) > 1)
+				//{
+				//	int i = 0;
+				//	string num = "";
+				//	int iNum = 0;
+				//	string c;
+				//	
+				//	if (finalResult.getTop() == '$')
 				//	{
-				//		//  get first operand
-				//		endTempNum = findNext('$', oneLine, i + 1);
-				//		tempNum = oneLine.substr(i + 1, (endTempNum - (i + 1)));
-				//		operand1 = createComplexNum(oneLine, endTempNum, tempNum);
-				//		i = endTempNum + 1; // update i to past the last '$'
+				//		finalResult.popBack();
 
-				//		// get second operand
-				//		if (oneLine[i] == '$')
+				//		while (finalResult.getTop() != '$')
 				//		{
-				//			endTempNum = findNext('$', oneLine, i + 1);
-				//			tempNum = oneLine.substr(i + 1, (endTempNum - (i + 1)));
-				//			operand2 = createComplexNum(oneLine, endTempNum, tempNum);
-				//			i = endTempNum + 1; // update i to past the last '$'
+				//			num += finalResult.getNPopTop();
 				//		}
 
-				//		// store operator
-				//		if (isOperator(oneLine[i]) == true)
+				//		for (int i = 0; i < num.size(); i++)
 				//		{
-				//			// do nothing (WHAT)
-				//			//_operatoR = oneLine[i];
+				//			c = num[i];
+				//			iNum = stoi(c) * pow(10, num.size() - i);
 				//		}
 
-				//		else
-
-				//		{
-				//			// create 3rd complex number and check for the next operator and 
-				//			// perform operation and set result equal to operator 2 & continue
-				//			// get second operand
-				//			if (oneLine[i] == '$')
-				//			{
-				//				endTempNum = findNext('$', oneLine, i + 1);
-				//				tempNum = oneLine.substr(i + 1, (endTempNum - (i + 1)));
-				//				operand3 = createComplexNum(oneLine, endTempNum, tempNum);
-				//				i = endTempNum + 1; // update i to past the last '$'
-
-				//				// store operator
-				//				if (isOperator(oneLine[i]) == true)
-				//					_operatoR = oneLine[i];
-
-				//				operand2 = performOperation(operand2, operand3, _operatoR);
-				//				i++; // update i
-
-				//				if (isOperator(oneLine[i]) == true)
-				//					_operatoR = oneLine[i];
-
-				//				// if operator is %
-				//				if (_operatoR == '%')
-				//				{
-				//					// operand is on the finalResult stack
-				//					operand2 = performOperation(operand2, Complex(), _operatoR);
-				//					i++; // update i
-				//				}
-				//			}
-
-
-				//		}
-
+				//		//finalResult.addBack(createComplexNum)
 				//	}
-
-				//	// store operator
-				//	if (isOperator(oneLine[i]) == true)
-				//		_operatoR = oneLine[i];
-
-				//	// if operator is %
-				//	if (_operatoR == '%')
-				//	{
-				//		// operand is on the finalResult stack
-				//		operand1 = finalResultTest.end().current->data;
-
-				//		// pop the operand
-				//		finalResultTest.popBack();
-
-				//		// perform operation and add to stack
-				//		finalResultTest.addBack(performOperation(operand1, operand2, _operatoR));
-				//	}
-
-				//	// if only the operator has been populated
-				//	else if (operand1 == Complex() && operand2 == Complex() && _operatoR != '%'
-				//		/*&& (_operatoR == '*' || _operatoR == '/' )*/)
-				//	{
-				//		// operands are on the finalResult stack
-				//		operand1 = finalResultTest.end().current->prev->data;
-				//		operand2 = finalResultTest.end().current->data;
-
-				//		// pop the operands
-				//		finalResultTest.popBack();
-				//		finalResultTest.popBack();
-
-				//		// perform operation and add to stack
-				//		finalResultTest.addBack(performOperation(operand1, operand2, _operatoR));
-				//	}
-
-				//	else if (operand2 == Complex() && _operatoR != '%')
-				//	{
-				//		operand2 = operand1;
-				//		operand1 = finalResultTest.end().current->data;
-
-				//		// pop the operand
-				//		finalResultTest.popBack();
-
-				//		// perform operation and add to stack
-				//		finalResultTest.addBack(performOperation(operand1, operand2, _operatoR));
-				//	}
-
-				//	else // add the result to the back
-				//		finalResultTest.addBack(performOperation(operand1, operand2, _operatoR));
 				//}
 
 				outFile << finalResultTest.end().current->data << endl;

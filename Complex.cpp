@@ -254,17 +254,30 @@ bool Complex::operator>=(const Complex & right)
 	return (_this.re >= _right.re && _this.im >= _right.im && _this.dem >= _right.dem);
 }
 
-string Complex::toString() const
+string Complex::toString() 
 {
+	reFormat();
+
 	string temp = "";
 
 	if (im < 0)
+	{
 		temp = '[' + to_string(re) + to_string(im) + 'i' + ']' + '/' + to_string(dem);
-
+	}
 	else
 		temp = '[' + to_string(re) + '+' + to_string(im) + 'i' + ']' + '/' + to_string(dem);
 
 	return temp;
+}
+
+void Complex::reFormat()
+{
+	if (re < 0)
+	{
+		re *= -1;
+		im *= -1;
+		dem *= -1;
+	}
 }
 
 int Complex::gcd(int a, int b)
@@ -307,7 +320,7 @@ int Complex::lcm(int a, int b)
 	return (a * b) / gcd(a, b);
 }
 
-ostream & operator<<(ostream & stream, const Complex & a)
+ostream & operator<<(ostream & stream, Complex & a)
 {
 	stream << a.toString();
 

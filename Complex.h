@@ -90,13 +90,18 @@ public:
 				the ostream object which will output the complex number in 
 				the form:				[re + imi]/dem
 	*/
-	friend ostream& operator<< (ostream& stream, const Complex& a);
+	friend ostream& operator<< (ostream& stream, Complex& a);
 
 	/*
 	toString method to output the complex number as a string in the 
 	the format:						 [re + imi]/dem
 	*/
-	string toString() const; //Format [re + imi]/dem
+	string toString() ; //Format [re + imi]/dem
+
+	/*
+	Reformat so that real portion is always positive
+	*/
+	void reFormat(); 
 	
 	/*_______________________ PARTS OF A COMPLEX NUMBER __________________________________________*/
 	int   re;   //real part of a complex number
