@@ -2847,69 +2847,15 @@ void main()
 						// real
 						if (point.isReal == true)
 							myVEC.pushComplex(Complex(point.number, 0, 1));
-						//vec->push_back(Complex(point.number, 0, 1));
 
 					// imaginary
 						else
 							myVEC.pushComplex(Complex(0, point.number, 1));
-						//vec->push_back(Complex(0, point.number, 1));
 					}
-
-					// //operand1 is empty & no operator?
-					//if (operand1 == Complex(INT_MAX, INT_MAX, INT_MAX) && _operatoR == 0)
-					//{
-					//	// imaginary or real 
-					//	Point point = returnNum(oneLine, i);
-
-					//	// real
-					//	if (point.isReal == true)
-					//		operand1 = Complex(point.number, 0, 1);
-
-					//	 //imaginary
-					//	else
-					//		operand1 = Complex(0, point.number, 1);
-					//}
-
-					// //operand2 is empty & no operator?
-					//else if (operand2 == Complex(INT_MAX, INT_MAX, INT_MAX) && _operatoR == 0)
-					//{
-					//	// imaginary or real 
-					//	Point point = returnNum(oneLine, i);
-
-					//	// real
-					//	if (point.isReal == true)
-					//		operand2 = Complex(point.number, 0, 1);
-
-					//	// imaginary
-					//	else
-					//		operand2 = Complex(0, point.number, 1);
-					//}
-
-					// //operand3 is empty & no operator?
-					//else if (operand3 == Complex(INT_MAX, INT_MAX, INT_MAX) && _operatoR == 0)
-					//{
-					//	 //imaginary or real 
-					//	Point point = returnNum(oneLine, i);
-
-					//	 // real
-					//	if (point.isReal == true)
-					//		operand3 = Complex(point.number, 0, 1);
-
-					//	 // imaginary
-					//	else
-					//		operand3 = Complex(0, point.number, 1);
-					//}
-
-					//if ()
-
-				//}
 
 					else if (isOperator(oneLine[i]) == true)
 					{
 						_operatoR = oneLine[i];
-
-						//// update myVec
-						//myVEC = Vector(vec);
 
 						if (_operatoR != '%')
 						{
@@ -2921,6 +2867,7 @@ void main()
 								myVEC.popComplex();
 								myVEC.popComplex();
 							}
+							
 							// 1 in VEC and 1 in finalResultTest
 							else if (myVEC.size() == 1 && finalResultTest.isEmptyList() == false)
 							{
@@ -2948,7 +2895,7 @@ void main()
 						else if (_operatoR == '%')
 						{
 							// VEC is empty and finalResultTest is nonempty
-							if (/*myVEC.size() == 0 &&*/ isOperator(oneLine[i - 1]) == true && finalResultTest.isEmptyList() == false)
+							if (isOperator(oneLine[i - 1]) == true && finalResultTest.isEmptyList() == false)
 								finalResultTest.addBack(performOperation(finalResultTest.getNPopTop(), Complex(), _operatoR));
 
 							// VEC is nonempty and finalResultTest is empty
@@ -2963,44 +2910,6 @@ void main()
 								terminate();
 							}
 						}
-						//	// 2 or more in VEC just grab the last two in VEC 
-						//	// and add to the back
-						//	if (myVEC.size() > 1)
-						//		finalResultTest.addBack(performOperation(myVEC.popComplex(), myVEC.popComplex(), _operatoR));
-
-						//	// 1 in VEC and 1 in finalResultTest
-						//	else if (myVEC.size() == 1 && finalResultTest.isEmptyList() == false)
-						//		finalResultTest.addBack(performOperation(myVEC.popComplex(), finalResultTest.getNPopTop(), _operatoR));
-
-						//	// 0 in VEC and at least 2 in finalResultTest
-						//	else if (myVEC.size() == 0 && finalResultTest.getSize() >= 2)
-						//		finalResultTest.addBack(performOperation(finalResultTest.getNPopTop(), finalResultTest.getNPopTop(), _operatoR));
-
-						//	else
-						//	{
-						//		cout << "Error can't perform operation without necessary operands. Error in main processing oneLine.";
-						//		system("pause");
-						//		terminate();
-						//	}
-						//}
-
-							// // if operand1 and operand2 are both not empty but operand3 is empty
-							//if (operand1 != Complex(INT_MAX, INT_MAX, INT_MAX)
-							//	&& operand2 != Complex(INT_MAX, INT_MAX, INT_MAX)
-							//	&& operand3 == Complex(INT_MAX, INT_MAX, INT_MAX))
-							//{
-							//	finalResultTest.addBack(performOperation(operand1, operand2, _operatoR));
-							//}
-
-							//// if all operands are not empty
-							//else if (operand1 != Complex(INT_MAX, INT_MAX, INT_MAX)
-							//	&& operand2 != Complex(INT_MAX, INT_MAX, INT_MAX)
-							//	&& operand3 != Complex(INT_MAX, INT_MAX, INT_MAX))
-							//{
-							//	finalResultTest.addBack(performOperation(operand2, operand3, _operatoR));
-							//	vector<Complex>* vec = new vector<Complex>();
-							//	vec->push_back((*new Complex()));
-							//}
 					}
 
 					else
@@ -3010,40 +2919,6 @@ void main()
 						terminate();
 					}
 				} // end for loop
-
-
-				//// put all of current processed oneLine on a stack and perform the operations 
-				//// and push result back on stack until you are left with one operand (stack size = 1)
-				//for (int i = 0; i < oneLine.length(); i++)
-				//{
-				//		finalResult.addBack(oneLine[i]);
-				//}
-
-				//while (finalResult.getSize(	) > 1)
-				//{
-				//	int i = 0;
-				//	string num = "";
-				//	int iNum = 0;
-				//	string c;
-				//	
-				//	if (finalResult.getTop() == '$')
-				//	{
-				//		finalResult.popBack();
-
-				//		while (finalResult.getTop() != '$')
-				//		{
-				//			num += finalResult.getNPopTop();
-				//		}
-
-				//		for (int i = 0; i < num.size(); i++)
-				//		{
-				//			c = num[i];
-				//			iNum = stoi(c) * pow(10, num.size() - i);
-				//		}
-
-				//		//finalResult.addBack(createComplexNum)
-				//	}
-				//}
 
 				outFile << finalResultTest.end().current->data << endl;
 				cout << finalResultTest.end().current->data << endl<< endl;
@@ -3062,8 +2937,3 @@ void main()
 	printf("\n\n");
 	system("pause");
 } // end main
-
-
-// TO FIX ALL THE WAY 
-// CHANGE DEFINE NUMBERS TO ADD NEGATIVE SIGNS WHERE THERE ARE I'S 
-// AND CHANGE THE LOCATION OF THE NEGATIVE IN THE ORIGINAL EQUATION WITH A PLUS
