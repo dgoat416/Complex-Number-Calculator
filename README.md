@@ -1,5 +1,5 @@
 # Complex Number Calculator
- Solves complex number arithmetic equations. 
+ Solves complex number arithmetic equations. <br />
  Implemented using my own implementation of a <br />
  stack represented as a doubly linked list.
  
