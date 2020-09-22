@@ -3,7 +3,7 @@
  Implemented using my own implementation of a stack represented as a doubly linked list.
  
  # Expressions.txt
- An input file containing expressions to evaluate:
+ An input file containing expressions to evaluate: <br />
 33+2i*4+i= <br />
 22+i*22-i = <br />
 (2+3i)/(7+i)%= <br />
@@ -13,7 +13,7 @@
 9+(1-i)*(1+i)= <br />
 
 # Results.txt
-An output file that is the result of the evaluation of each line of expressions.txt:
+An output file that is the result of the evaluation of each line of expressions.txt: <br />
 [130+41i]/1 <br />
 [485+0i]/1 <br />
 [11+23i]/50 <br />
