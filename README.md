@@ -1,6 +1,7 @@
 # Complex Number Calculator
- Solves complex number arithmetic equations.
- Implemented using my own implementation of a stack represented as a doubly linked list.
+ Solves complex number arithmetic equations. 
+ Implemented using my own implementation of a <br />
+ stack represented as a doubly linked list.
  
  # Expressions.txt
  An input file containing expressions to evaluate: <br />
