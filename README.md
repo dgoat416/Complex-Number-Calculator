@@ -4,13 +4,13 @@
  
  # Expressions.txt
  An input file containing expressions to evaluate: <br />
-33+2i*4+i= <br />
-22+i*22-i = <br />
+33+2i * 4+i= <br />
+22+i * 22-i = <br />
 (2+3i)/(7+i)%= <br />
 (5+3i)/(1+3i)%= <br />
-(1+i)%/3+i*2-i+3= <br />
-((1+i)%/3+i*2-i+3)+(3i+1*(2i*2-i%/3))= <br />
-9+(1-i)*(1+i)= <br />
+(1+i)%/3+i * 2-i+3= <br />
+((1+i)%/3+i * 2-i+3)+(3i+1 * (2i * 2-i%/3))= <br />
+9+(1-i) * (1+i)= <br />
 
 # Results.txt
 An output file that is the result of the evaluation of each line of expressions.txt: <br />
